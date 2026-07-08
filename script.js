@@ -6,6 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const headerCta = document.querySelector('.header-cta');
 
+    let lastScrollTop = 0;
+
+    const toggleHeaderOnScroll = () => {
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScrollTop && currentScroll > 80) {
+            header?.classList.add('header-hidden');
+        } else {
+            header?.classList.remove('header-hidden');
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    };
+
+    window.addEventListener('scroll', toggleHeaderOnScroll, { passive: true });
+
     const copy = {
         pt: {
             lang: 'pt-BR',
