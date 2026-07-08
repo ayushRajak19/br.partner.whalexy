@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-tab-btn');
     const sections = document.querySelectorAll('.tab-content');
     const languageButtons = document.querySelectorAll('.language-btn');
+    const header = document.querySelector('header');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const headerCta = document.querySelector('.header-cta');
 
     const copy = {
         pt: {
@@ -483,6 +486,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const setMenuOpen = (isOpen) => {
+        if (!header || !menuToggle) return;
+        header.classList.toggle('menu-open', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-xmark', isOpen);
+        }
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -496,12 +510,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sections.forEach((section) => observer.observe(section));
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            setMenuOpen(!header?.classList.contains('menu-open'));
+        });
+    }
+
     navLinks.forEach((link) => link.addEventListener('click', () => {
         const id = link.getAttribute('href')?.replace('#', '');
         if (id) setActiveNav(id);
+        setMenuOpen(false);
     }));
     languageButtons.forEach((button) => {
         button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+    });
+    headerCta?.addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuOpen(false);
     });
 
     applyLanguage(currentLang);

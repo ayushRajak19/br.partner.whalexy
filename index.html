@@ -7,7 +7,7 @@
     <title>Whalexy Brasil - Entrada no Mercado</title>
     <meta name="description"
         content="Whalexy Brazil Market Entry Document: mission, vision, market opportunity, competitive pricing, partner-led expansion, risks, and contact details.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=logo-x-20260708">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -15,11 +15,16 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                WHALEXY <span>BRASIL</span>
+                WHALEXY <span class="logo-x">x</span> <span>BRASIL</span>
                 <span class="logo-meta">B2B Partnership</span>
             </div>
 
-            <div class="header-actions">
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="header-actions" id="mobile-menu">
                 <nav class="nav-tabs">
                     <a href="#foundation" class="nav-tab-btn active">Fundação</a>
                     <a href="#market" class="nav-tab-btn">Mercado</a>
@@ -596,12 +601,12 @@
         </div>
     </section>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h4>WHALEXY</h4>
-                    <p style="margin-top: 1rem;">Documento de entrada no mercado brasileiro por Mobius Bloom Ventures
+                    <div class="footer-logo">WHALEXY <span class="logo-x">x</span> <span>BRASIL</span></div>
+                    <p>Documento de entrada no mercado brasileiro por Mobius Bloom Ventures
                         Pvt. Ltd.</p>
                 </div>
                 <div class="footer-links">
@@ -616,7 +621,7 @@
                 </div>
                 <div class="footer-links">
                     <h5>Status</h5>
-                    <p>Rascunho interno de trabalho<br>Precificação pendente de aprovação final</p>
+                    <p class="footer-status">Rascunho interno de trabalho<br>Precificação pendente de aprovação final</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -626,7 +631,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=language-switch"></script>
+    <script src="script.js?v=mobile-menu-20260708"></script>
 </body>
 
 </html>
